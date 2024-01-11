@@ -5,6 +5,8 @@ import dev.crnyy.vagtsystem.files.Message;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.a.AVagtShopMenu;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.b.BVagtShopMenu;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.c.CVagtShopMenu;
+import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.a.AVagtEnchantMenu;
+import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.b.BVagtEnchantMenu;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.c.CVagtEnchantMenu;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -47,12 +49,14 @@ public class SignManager implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Block clickedBlock = event.getClickedBlock();
-        CVagtShopMenu cMenu = new CVagtShopMenu();
+        CVagtShopMenu cMenu = new CVagtShopMenu(config);
         CVagtEnchantMenu enchantMenu = new CVagtEnchantMenu();
+        BVagtEnchantMenu benchantMenu = new BVagtEnchantMenu();
+        AVagtEnchantMenu aenchantMenu = new AVagtEnchantMenu();
 
-        BVagtShopMenu bMenu = new BVagtShopMenu();
+        BVagtShopMenu bMenu = new BVagtShopMenu(config);
 
-        AVagtShopMenu aMenu = new AVagtShopMenu();
+        AVagtShopMenu aMenu = new AVagtShopMenu(config);
 
         if (clickedBlock != null && clickedBlock.getType() == Material.WALL_SIGN) {
             Sign sign = (Sign) clickedBlock.getState();
@@ -74,7 +78,13 @@ public class SignManager implements Listener {
                 if (sign.getLine(1).equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&', message.getMessages().getString("enchantsign.text.2nd")))) {
                     if (sign.getLine(2).equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&', message.getMessages().getString("enchantsign.text.3nd")))) {
                         if (sign.getLine(3).equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&', message.getMessages().getString("enchantsign.text.4nd")))) {
-                            enchantMenu.openInventory(player);
+                            if (player.getWorld().getName().equalsIgnoreCase(config.getConfig().getString("Worlds.C"))) {
+                                enchantMenu.openInventory(player);
+                            } else if (player.getWorld().getName().equalsIgnoreCase(config.getConfig().getString("Worlds.B"))) {
+                                benchantMenu.openInventory(player);
+                            } else if (player.getWorld().getName().equalsIgnoreCase(config.getConfig().getString("Worlds.A"))) {
+                                aenchantMenu.openInventory(player);
+                            }
                         }
                     }
                 }

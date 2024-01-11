@@ -1,5 +1,6 @@
-package dev.crnyy.vagtsystem.plugins.vagtontime;
+package dev.crnyy.vagtsystem.plugins.vagtpay;
 
+import dev.crnyy.vagtsystem.plugins.PlayerManager;
 import dev.crnyy.vagtsystem.utils.ItemStackManager;
 import dev.crnyy.vagtsystem.utils.LoreManager;
 import org.bukkit.Bukkit;
@@ -9,9 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class VagtMenuOntime {
+public class VagtPayMenu {
+    private Inventory inv = Bukkit.createInventory(null, 45, "§6§lVAGT§f§l LØN");
 
-    private Inventory ontime = Bukkit.createInventory(null, 45, "§6§lVAGT §f§lONTIME§7");
+
 
     @Utility
     public void items(final Player player) {
@@ -22,34 +24,37 @@ public class VagtMenuOntime {
         //Vagt
         item = itemStack.itemMaker("§7", Material.STAINED_GLASS_PANE, 1, 1, lore.loreMaker(""));
         for (int i = 0; i < 9; i++) {
-            ontime.setItem(i, item);
+            inv.setItem(i, item);
         }
         item = itemStack.itemMaker("§7", Material.STAINED_GLASS_PANE, 1, 0, lore.loreMaker(""));
         for (int i = 36; i < 45; i++) {
-            ontime.setItem(i, item);
+            inv.setItem(i, item);
         }
 
-        item = itemStack.getHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2NhMWE0OGQyZDIzMWZhNzFiYTVmN2M0MGZkYzEwZDNmMmU5OGM1YTYzYzAxNzMyMWU2NzgxMzA4YjhhNTc5MyJ9fX0=", "§6§lALL §f§lTIME", lore.loreMaker(
+        //Items
+        item = itemStack.getHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTI2MjlmMjY4MmRjZWUzMGY1ODU1YjFlNTQyN2NjNGJlZTczZDE4YTI3NmZhZmM1MjBkNjkzYjQwY2E4MWIyMiJ9fX0=", "§6§lVAGT§f§l LØN", lore.loreMaker(
+                "&aLæs information om din nuværende løn.",
+                "",
+                "&8&m--------------------",
+                "&7Løn: &f$", //Løn
+                "&7Næste løn: &fNæste løn", //Løn Næste løn tid
                 "",
                 "",
+                "&7Pris for opgradering: &fPris for næste opgrade",//Opgrade
                 "",
-                ""));
-
-        ontime.setItem(19, item);
-
-
+                "",
+                "&8Price: (PRIS HER)")); //Ved ikke om kommer til at blive brugt
+        inv.setItem(22, item);
         item = itemStack.getHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU1MGI3Zjc0ZTllZDc2MzNhYTI3NGVhMzBjYzNkMmU4N2FiYjM2ZDRkMWY0Y2E2MDhjZDQ0NTkwY2NlMGIifX19", "§c§lTILBAGE", lore.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at gå tilbage.",
                 "",
                 "§8§m-------------------------"));
-        ontime.setItem(36, item);
+        inv.setItem(36, item);
     }
     public void openInventory(final Player player) {
         items(player);
-        player.openInventory(ontime);
+        player.openInventory(inv);
     }
-
-
 }

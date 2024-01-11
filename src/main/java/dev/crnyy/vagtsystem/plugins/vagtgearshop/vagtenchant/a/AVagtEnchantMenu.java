@@ -12,7 +12,7 @@ import org.bukkit.inventory.PlayerInventory;
 
 public class AVagtEnchantMenu {
 
-    private Inventory inv = Bukkit.createInventory(null, 54, "Vagt Enchant");
+    private Inventory inv = Bukkit.createInventory(null, 54, "Vagt Enchant A");
 
     @Utility
     public void items(final Player player) {

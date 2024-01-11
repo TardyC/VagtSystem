@@ -55,7 +55,7 @@ public class AVagtEnchantItemsListener implements Listener {
         final Player player = (Player) e.getWhoClicked();
         final double balance = economy.getBalance(player);
         CVagtEnchantItems items = new CVagtEnchantItems();
-        CVagtEnchantMenu menu = new CVagtEnchantMenu();
+        AVagtEnchantMenu menu = new AVagtEnchantMenu();
         final InventoryView view = player.getOpenInventory();
         final Inventory topInventory = view.getTopInventory();
         if (view == null) {
@@ -96,7 +96,7 @@ public class AVagtEnchantItemsListener implements Listener {
             switch (e.getCurrentItem().getType()) {
                 case GOLD_HELMET:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Hjelm")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aVagt Hjelm")) {
                             e.setCancelled(true);
                             ItemStack helmet = player.getInventory().getHelmet();
                             if (helmet == null || helmet.getItemMeta() == null) {
@@ -145,9 +145,9 @@ public class AVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_CHESTPLATE:
+                case DIAMOND_CHESTPLATE:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Brystplade")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aVagt Brystplade")) {
                             e.setCancelled(true);
                             ItemStack chestplate = player.getInventory().getChestplate();
                             if (chestplate == null || chestplate.getItemMeta() == null) {
@@ -196,9 +196,9 @@ public class AVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_LEGGINGS:
+                case DIAMOND_LEGGINGS:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Bukser")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aVagt Bukser")) {
                             e.setCancelled(true);
                             ItemStack leggings = player.getInventory().getLeggings();
                             if (leggings == null || leggings.getItemMeta() == null) {
@@ -247,9 +247,9 @@ public class AVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_BOOTS:
+                case DIAMOND_BOOTS:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Sko")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aVagt Sko")) {
                             e.setCancelled(true);
                             ItemStack boots = player.getInventory().getBoots();
                             if (boots == null || boots.getItemMeta() == null) {
@@ -298,11 +298,11 @@ public class AVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_SWORD:
+                case DIAMOND_SWORD:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Sværd")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aVagt Sværd")) {
                             e.setCancelled(true);
-                            ItemStack sword = findItemWithName(player.getInventory(), Material.IRON_SWORD, "§cVagt Sværd");
+                            ItemStack sword = findItemWithName(player.getInventory(), Material.IRON_SWORD, "§aVagt Sværd");
                             if (sword == null || sword.getItemMeta() == null) {
                                 return;
                             }
@@ -349,9 +349,9 @@ public class AVagtEnchantItemsListener implements Listener {
                     break;
                 case BOW:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Bue")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aVagt Bue")) {
                             e.setCancelled(true);
-                            ItemStack bow = findItemWithName(player.getInventory(), Material.BOW, "§cVagt Bue");
+                            ItemStack bow = findItemWithName(player.getInventory(), Material.BOW, "§aVagt Bue");
                             if (bow == null || bow.getItemMeta() == null) {
                                 return;
                             }
@@ -403,13 +403,13 @@ public class AVagtEnchantItemsListener implements Listener {
     private int calculateEnchantCost(int protectionLevel) {
         switch (protectionLevel) {
             case 1:
-                return config.getConfig().getInt("VagtEnchant.C.protection-1");
+                return config.getConfig().getInt("VagtEnchant.A.protection-1");
             case 2:
-                return config.getConfig().getInt("VagtEnchant.C.protection-2");
+                return config.getConfig().getInt("VagtEnchant.A.protection-2");
             case 3:
-                return config.getConfig().getInt("VagtEnchant.C.protection-3");
+                return config.getConfig().getInt("VagtEnchant.A.protection-3");
             case 4:
-                return config.getConfig().getInt("VagtEnchant.C.protection-4");
+                return config.getConfig().getInt("VagtEnchant.A.protection-4");
         }
         return protectionLevel;
     }

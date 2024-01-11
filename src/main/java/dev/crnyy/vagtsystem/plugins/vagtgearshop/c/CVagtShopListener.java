@@ -1,10 +1,13 @@
 package dev.crnyy.vagtsystem.plugins.vagtgearshop.c;
 
 import dev.crnyy.vagtsystem.Main;
+import dev.crnyy.vagtsystem.files.Config;
 import dev.crnyy.vagtsystem.plugins.ArmorManager;
 import dev.crnyy.vagtsystem.utils.Messages;
+import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,9 +21,11 @@ public class CVagtShopListener implements Listener {
 
     private Main plugin;
     private Messages messages;
-    public CVagtShopListener(Main plugin, Messages messages) {
+    private Config config;
+    public CVagtShopListener(Main plugin, Messages messages, Config config) {
         this.plugin = plugin;
         this.messages = messages;
+        this.config = config;
     }
 
     private Economy economy = Main.economy;
@@ -64,15 +69,15 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lHJELM")) {
                             e.setCancelled(true);
-                            int price = 2000;
+                            int price = config.getConfig().getInt("Vagtshop.C.helmet");
                             if (balance >= price) {
                                 am.player = player.getName();
                                 am.cHelmetMap.put(player.getUniqueId(), 0);
                                 player.getInventory().addItem(am.cHelmet(player));
-                                player.sendMessage(messages.vagtshopBuyedItem("hjelm", price));
-                                economy.withdrawPlayer(player, 2000);
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("hjelm", price)));
+                                economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("Hjelm", price)));
                             }
                         }
                     }
@@ -81,14 +86,15 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lBRYSTPLADE")) {
                             e.setCancelled(true);
-                            if (balance >= 2000) {
+                            int price = config.getConfig().getInt("Vagtshop.C.chestplate");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 am.cChestplateMap.put(player.getUniqueId(), 0);
                                 player.getInventory().addItem(am.cChestplate(player));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("brystplade", price)));
                                 economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("Brystplade", price)));
                             }
                         }
                     }
@@ -97,14 +103,15 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lBUKSER")) {
                             e.setCancelled(true);
-                            if (balance >= 2000) {
+                            int price = config.getConfig().getInt("Vagtshop.C.legs");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 am.cLeggingsMap.put(player.getUniqueId(), 0);
                                 player.getInventory().addItem(am.cLeggings(player));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("Bukser", price)));
                                 economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("Bukser", price)));
                             }
                         }
                     }
@@ -113,14 +120,15 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lSKO")) {
                             e.setCancelled(true);
-                            if (balance >= 2000) {
+                            int price = config.getConfig().getInt("Vagtshop.C.boots");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 am.cBootsMap.put(player.getUniqueId(), 0);
                                 player.getInventory().addItem(am.cBoots(player));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("Sko", price)));
-                                economy.withdrawPlayer(player, 2000);
+                                economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("Sko", price)));
                             }
                         }
                     }
@@ -129,14 +137,15 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lSVÆRD")) {
                             e.setCancelled(true);
-                            if (balance >= 2000) {
+                            int price = config.getConfig().getInt("Vagtshop.C.sword");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 am.cSwordMap.put(player.getUniqueId(), 0);
                                 player.getInventory().addItem(am.cSword(player));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("Sværd", price)));
-                                economy.withdrawPlayer(player, 2000);
+                                economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("Sværd", price)));
                             }
                         }
                     }
@@ -145,14 +154,15 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lBUE")) {
                             e.setCancelled(true);
-                            if (balance >= 1500) {
+                            int price = config.getConfig().getInt("Vagtshop.C.bow");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 am.cBowMap.put(player.getUniqueId(), 0);
                                 player.getInventory().addItem(am.cBow(player));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("Bue", price)));
                                 economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("Bue", price)));
                             }
                         }
                     }
@@ -161,13 +171,14 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lPIND")) {
                             e.setCancelled(true);
-                            if (balance >= 2000) {
+                            int price = config.getConfig().getInt("Vagtshop.C.stick");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 player.getInventory().addItem(am.cStick(player, "C"));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("Stick", price)));
                                 economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("Stick", price)));
                             }
                         }
                     }
@@ -176,13 +187,14 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lMAD")) {
                             e.setCancelled(true);
-                            if (balance >= 300) {
+                            int price = config.getConfig().getInt("Vagtshop.C.food");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 player.getInventory().addItem(am.cFood(player, "C"));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("16x Mad", price)));
                                 economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("16x Mad", price)));
                             }
                         }
                     }
@@ -191,13 +203,14 @@ public class CVagtShopListener implements Listener {
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6§lPILE")) {
                             e.setCancelled(true);
-                            if (balance >= 1000) {
+                            int price = config.getConfig().getInt("Vagtshop.C.arrow");
+                            if (balance >= price) {
                                 am.player = player.getName();
                                 player.getInventory().addItem(am.cArrows(player, "C"));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopBuyedItem("16x Arrow", price)));
                                 economy.withdrawPlayer(player, price);
                             } else {
-                                player.sendMessage("Du har ikke nok penge til dette.");
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', messages.vagtshopNoMoney("16x Arrow", price)));
                             }
                         }
                     }

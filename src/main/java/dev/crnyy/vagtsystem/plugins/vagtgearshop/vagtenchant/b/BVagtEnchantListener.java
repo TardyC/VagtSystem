@@ -51,39 +51,39 @@ public class BVagtEnchantListener implements Listener {
             switch (e.getCurrentItem().getType()) {
                 case GOLD_HELMET:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Hjelm")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Hjelm")) {
                             e.setCancelled(true);
                             items.openInventory("helmet", player);
                         }
                     }
                     break;
-                case IRON_CHESTPLATE:
+                case DIAMOND_CHESTPLATE:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Brystplade")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Brystplade")) {
                             e.setCancelled(true);
                             items.openInventory("chestplate", player);
                         }
                     }
                     break;
-                case IRON_LEGGINGS:
+                case DIAMOND_LEGGINGS:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Bukser")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Bukser")) {
                             e.setCancelled(true);
                             items.openInventory("leggings", player);
                         }
                     }
                     break;
-                case IRON_BOOTS:
+                case DIAMOND_BOOTS:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Sko")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Sko")) {
                             e.setCancelled(true);
                             items.openInventory("boots", player);
                         }
                     }
                     break;
-                case IRON_SWORD:
+                case DIAMOND_SWORD:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Sværd")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Sværd")) {
                             e.setCancelled(true);
                             items.openInventory("sword", player);
                         }
@@ -91,7 +91,7 @@ public class BVagtEnchantListener implements Listener {
                     break;
                 case BOW:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Bue")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Bue")) {
                             e.setCancelled(true);
                             items.openInventory("bow", player);
                         }

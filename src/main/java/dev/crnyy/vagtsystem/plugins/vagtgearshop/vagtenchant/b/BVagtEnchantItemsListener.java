@@ -55,7 +55,7 @@ public class BVagtEnchantItemsListener implements Listener {
         final Player player = (Player) e.getWhoClicked();
         final double balance = economy.getBalance(player);
         CVagtEnchantItems items = new CVagtEnchantItems();
-        CVagtEnchantMenu menu = new CVagtEnchantMenu();
+        BVagtEnchantMenu menu = new BVagtEnchantMenu();
         final InventoryView view = player.getOpenInventory();
         final Inventory topInventory = view.getTopInventory();
         if (view == null) {
@@ -145,7 +145,7 @@ public class BVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_CHESTPLATE:
+                case DIAMOND_CHESTPLATE:
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Brystplade")) {
                             e.setCancelled(true);
@@ -196,7 +196,7 @@ public class BVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_LEGGINGS:
+                case DIAMOND_LEGGINGS:
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Bukser")) {
                             e.setCancelled(true);
@@ -247,7 +247,7 @@ public class BVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_BOOTS:
+                case DIAMOND_BOOTS:
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Sko")) {
                             e.setCancelled(true);
@@ -298,7 +298,7 @@ public class BVagtEnchantItemsListener implements Listener {
                         }
                     }
                     break;
-                case IRON_SWORD:
+                case DIAMOND_SWORD:
                     if (e.getCurrentItem().hasItemMeta()) {
                         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Sværd")) {
                             e.setCancelled(true);
@@ -349,9 +349,9 @@ public class BVagtEnchantItemsListener implements Listener {
                     break;
                 case BOW:
                     if (e.getCurrentItem().hasItemMeta()) {
-                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cVagt Bue")) {
+                        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bVagt Bue")) {
                             e.setCancelled(true);
-                            ItemStack bow = findItemWithName(player.getInventory(), Material.BOW, "§cVagt Bue");
+                            ItemStack bow = findItemWithName(player.getInventory(), Material.BOW, "§bVagt Bue");
                             if (bow == null || bow.getItemMeta() == null) {
                                 return;
                             }
@@ -403,13 +403,13 @@ public class BVagtEnchantItemsListener implements Listener {
     private int calculateEnchantCost(int protectionLevel) {
         switch (protectionLevel) {
             case 1:
-                return config.getConfig().getInt("VagtEnchant.C.protection-1");
+                return config.getConfig().getInt("VagtEnchant.B.protection-1");
             case 2:
-                return config.getConfig().getInt("VagtEnchant.C.protection-2");
+                return config.getConfig().getInt("VagtEnchant.B.protection-2");
             case 3:
-                return config.getConfig().getInt("VagtEnchant.C.protection-3");
+                return config.getConfig().getInt("VagtEnchant.B.protection-3");
             case 4:
-                return config.getConfig().getInt("VagtEnchant.C.protection-4");
+                return config.getConfig().getInt("VagtEnchant.B.protection-4");
         }
         return protectionLevel;
     }

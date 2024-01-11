@@ -19,7 +19,7 @@ public class VagtLevelMenu {
         this.quests = quests;
     }
 
-    private Inventory inv = Bukkit.createInventory(null, 45, "Vagt Level");
+    private Inventory inv = Bukkit.createInventory(null, 45, "§6§lVAGT §f§lLEVEL");
 
     @Utility
     public void items(final Player player) {
@@ -36,6 +36,13 @@ public class VagtLevelMenu {
             inv.setItem(i, item);
 
         }
+        item = itemStack.getHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU1MGI3Zjc0ZTllZDc2MzNhYTI3NGVhMzBjYzNkMmU4N2FiYjM2ZDRkMWY0Y2E2MDhjZDQ0NTkwY2NlMGIifX19", "§c§lTILBAGE", lore.loreMaker(
+                "§8§m-------------------------",
+                "",
+                "§7Klik her for at gå tilbage.",
+                "",
+                "§8§m-------------------------"));
+        inv.setItem(36, item);
         int level = manager.getLevel(player) + 1;
         if (!(quests.ironIsCollectedValue(player))) {
             item = itemStack.getHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTM4MjYxODFjZTkwMTJiNjY1ODY1ZjNhYzAwNjYzMDdiNGQwMmRhMjgxNTQwMTA0ZTA0NjFmZmVmYTc0NTlmZCJ9fX0=", "§6§lKRAV FOR §f§lLEVELUP §8§l( §e§l" + level + " §8§l)", lore.loreMaker(

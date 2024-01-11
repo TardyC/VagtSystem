@@ -1,5 +1,6 @@
 package dev.crnyy.vagtsystem.plugins.vagtgearshop.a;
 
+import dev.crnyy.vagtsystem.files.Config;
 import dev.crnyy.vagtsystem.utils.ItemStackManager;
 import dev.crnyy.vagtsystem.utils.LoreManager;
 import org.bukkit.Bukkit;
@@ -10,6 +11,11 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class AVagtShopMenu {
+    private Config config;
+
+    public AVagtShopMenu(Config config) {
+        this.config = config;
+    }
 
     private Inventory inv = Bukkit.createInventory(null, 54, "Vagt Shop A");
 
@@ -50,39 +56,39 @@ public class AVagtShopMenu {
         /**
          * ARMOR
          */
-        item = itemStackManager.itemMaker("§6§lHJELM", Material.GOLD_HELMET, 1, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lHJELM", Material.GOLD_HELMET, 1, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe en hjelm.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.helmet") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(11, item);
-        item = itemStackManager.itemMaker("§6§lBRYSTPLADE", Material.DIAMOND_CHESTPLATE, 1, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lBRYSTPLADE", Material.DIAMOND_CHESTPLATE, 1, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe en brystplade.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.chestplate") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(20, item);
-        item = itemStackManager.itemMaker("§6§lBUKSER", Material.DIAMOND_LEGGINGS, 1, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lBUKSER", Material.DIAMOND_LEGGINGS, 1, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe et par bukser.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.legs") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(29, item);
-        item = itemStackManager.itemMaker("§6§lSKO", Material.DIAMOND_BOOTS, 1, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lSKO", Material.DIAMOND_BOOTS, 1, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe et par sko.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.boots") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(38, item);
@@ -90,48 +96,48 @@ public class AVagtShopMenu {
         /**
          * ITEMS
          */
-        item = itemStackManager.itemMaker("§6§lSVÆRD", Material.DIAMOND_SWORD, 1, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lSVÆRD", Material.DIAMOND_SWORD, 1, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe et sværd.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.sword") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(22, item);
-        item = itemStackManager.itemMaker("§6§lBUE", Material.BOW, 1, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lBUE", Material.BOW, 1, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe en bue.",
                 "",
-                "§8【 &7Pris§8: §f$1.500 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.bow") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(23, item);
-        item = itemStackManager.itemMMaker("§6§lPIND", Material.STICK, 1, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMMaker("§a§lPIND", Material.STICK, 1, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe en pind..",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.stick") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(24, item);
-        item = itemStackManager.itemMaker("§6§lMAD", Material.GRILLED_PORK, 16, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lMAD", Material.GRILLED_PORK, 16, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe 16x mad.",
                 "",
-                "§8【 &7Pris§8: §f$300 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.food") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(31, item);
-        item = itemStackManager.itemMaker("§6§lPILE", Material.ARROW, 16, 0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§a§lPILE", Material.ARROW, 16, 0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at købe 16x pile.",
                 "",
-                "§8【 &7Pris§8: §f$1000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.A.arrow") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(32, item);

@@ -4,6 +4,7 @@ import dev.crnyy.vagtsystem.commands.VagtCommand;
 import dev.crnyy.vagtsystem.files.Message;
 import dev.crnyy.vagtsystem.plugins.signs.HealSign;
 import dev.crnyy.vagtsystem.plugins.vagtbuffs.VagtBuffs;
+import dev.crnyy.vagtsystem.plugins.vagtcoins.VagtCoinsListener;
 import dev.crnyy.vagtsystem.plugins.vagtcoins.VagtCoinsMenu;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.SignManager;
 import dev.crnyy.vagtsystem.files.Config;
@@ -17,6 +18,11 @@ import dev.crnyy.vagtsystem.plugins.vagtchat.VagtChatCommand;
 import dev.crnyy.vagtsystem.plugins.vagtcoins.VagtCoinsCommand;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.a.AVagtShopListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.b.BVagtShopListener;
+import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.a.AVagtEnchantItemsListener;
+import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.a.AVagtEnchantListener;
+import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.b.BVagtEnchantItems;
+import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.b.BVagtEnchantItemsListener;
+import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.b.BVagtEnchantListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.c.CVagtEnchantItems;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.c.CVagtEnchantItemsListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.c.CVagtEnchantListener;
@@ -24,18 +30,20 @@ import dev.crnyy.vagtsystem.plugins.vagtgearshop.c.CVagtShopListener;
 import dev.crnyy.vagtsystem.plugins.vagtkiste.VagtKiste;
 import dev.crnyy.vagtsystem.plugins.vagtkiste.VagtKisteCommand;
 import dev.crnyy.vagtsystem.plugins.vagtkiste.VagtKisteStatus;
-import dev.crnyy.vagtsystem.plugins.vagtlevel.TestCommand;
-import dev.crnyy.vagtsystem.plugins.vagtlevel.VagtLevel;
-import dev.crnyy.vagtsystem.plugins.vagtlevel.VagtLevelCommand;
-import dev.crnyy.vagtsystem.plugins.vagtlevel.VagtLevelQuests;
+import dev.crnyy.vagtsystem.plugins.vagtlevel.*;
 import dev.crnyy.vagtsystem.plugins.vagtmenu.VagtMenuListener;
 import dev.crnyy.vagtsystem.plugins.vagtmine.VagtMine;
 import dev.crnyy.vagtsystem.plugins.vagtmine.VagtMineCommand;
 import dev.crnyy.vagtsystem.plugins.vagtontime.VagtOntime;
 import dev.crnyy.vagtsystem.plugins.vagtontime.VagtOntimeCommand;
+import dev.crnyy.vagtsystem.plugins.vagtontime.VagtOntimeListener;
+import dev.crnyy.vagtsystem.plugins.vagtpay.VagtPayListener;
+import dev.crnyy.vagtsystem.plugins.vagtwarps.SignManagerWarp;
+import dev.crnyy.vagtsystem.plugins.vagtwarps.VagtWarpMenuListener;
 import dev.crnyy.vagtsystem.utils.Messages;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.block.Sign;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -71,6 +79,7 @@ public class Main extends JavaPlugin {
 
         saveDataFile();
         config.saveConfig();
+        message.saveConfig();
     }
 
 
@@ -86,6 +95,8 @@ public class Main extends JavaPlugin {
     private void listeners() {
         PlayerManager manager = new PlayerManager();
         Messages messages = new Messages(message);
+        this.config = config;
+        this.message = message;
 
         //Vagt
         this.getServer().getPluginManager().registerEvents(new SignManager(message, config), this);
@@ -95,19 +106,25 @@ public class Main extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new CVagtShopListener(this, new Messages(message), config), this);
         this.getServer().getPluginManager().registerEvents(new CVagtEnchantListener(), this);
         this.getServer().getPluginManager().registerEvents(new CVagtEnchantItemsListener(new ArmorManager(), config, messages, new CVagtEnchantItems()), this);
+        this.getServer().getPluginManager().registerEvents(new BVagtEnchantListener(), this);
+        this.getServer().getPluginManager().registerEvents(new BVagtEnchantItemsListener(new ArmorManager(), config, messages, new CVagtEnchantItems()), this);
+        this.getServer().getPluginManager().registerEvents(new BVagtShopListener(this, new Messages(message), config), this);
 
-        this.getServer().getPluginManager().registerEvents(new BVagtShopListener(this, new Messages(message)), this);
 
-        this.getServer().getPluginManager().registerEvents(new AVagtShopListener(this, new Messages(message)), this);
+        this.getServer().getPluginManager().registerEvents(new AVagtShopListener(this, new Messages(message), config), this);
+        this.getServer().getPluginManager().registerEvents(new AVagtEnchantItemsListener(new ArmorManager(), config, messages, new CVagtEnchantItems()), this);
+        this.getServer().getPluginManager().registerEvents(new AVagtEnchantListener(), this);
 
         //VagtChat
         this.getServer().getPluginManager().registerEvents(new VagtChat(messages), this);
 
         //VagtLevel
         this.getServer().getPluginManager().registerEvents(new VagtLevel(manager, new VagtLevelQuests()), this);
+        this.getServer().getPluginManager().registerEvents(new VagtLevelListener(), this);
 
         //VagtOntime
         this.getServer().getPluginManager().registerEvents(new VagtOntime(this), this);
+        this.getServer().getPluginManager().registerEvents(new VagtOntimeListener(), this);
 
         //Repair
         this.getServer().getPluginManager().registerEvents(new Repair(config, message, new Messages(message)), this);
@@ -125,6 +142,12 @@ public class Main extends JavaPlugin {
         //Vagt Warps
         this.getServer().getPluginManager().registerEvents(new VagtWarpMenuListener(),this);
         this.getServer().getPluginManager().registerEvents(new SignManagerWarp(message), this);
+
+        //Vagt Løn
+        this.getServer().getPluginManager().registerEvents(new VagtPayListener(), this);
+
+        //Vagt Coins
+        this.getServer().getPluginManager().registerEvents(new VagtCoinsListener(), this);
     }
 
     private void commands() {

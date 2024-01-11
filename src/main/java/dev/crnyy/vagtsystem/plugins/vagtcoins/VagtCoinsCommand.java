@@ -1,6 +1,7 @@
 package dev.crnyy.vagtsystem.plugins.vagtcoins;
 
 import dev.crnyy.vagtsystem.plugins.PlayerManager;
+import dev.crnyy.vagtsystem.plugins.vagtwarps.StartVagtMenu;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,7 +29,9 @@ public class VagtCoinsCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("vagtcoins")) {
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("menu")) {
-                    menu.open(player);
+                    VagtCoinsMenu menu = new VagtCoinsMenu();
+                    menu.openInventory(player);
+
                 }
             } else {
                 player.sendMessage("Coins system");

@@ -1,5 +1,6 @@
 package dev.crnyy.vagtsystem.plugins.vagtgearshop.c;
 
+import dev.crnyy.vagtsystem.files.Config;
 import dev.crnyy.vagtsystem.utils.ItemStackManager;
 import dev.crnyy.vagtsystem.utils.LoreManager;
 import org.bukkit.Bukkit;
@@ -11,6 +12,11 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 public class CVagtShopMenu {
+    private Config config;
+
+    public CVagtShopMenu(Config config) {
+        this.config = config;
+    }
 
     private Inventory inv = Bukkit.createInventory(null, 54, "Vagt Shop");
 
@@ -56,7 +62,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe en hjelm.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.helmet") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(11, item);
@@ -65,7 +71,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe en brystplade.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.chestplate") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(20, item);
@@ -74,7 +80,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe et par bukser.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.legs") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(29, item);
@@ -83,7 +89,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe et par sko.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.boots") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(38, item);
@@ -96,7 +102,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe et sværd.",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.sword") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(22, item);
@@ -105,7 +111,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe en bue.",
                 "",
-                "§8【 &7Pris§8: §f$1.500 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.bow") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(23, item);
@@ -114,7 +120,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe en pind..",
                 "",
-                "§8【 &7Pris§8: §f$2.000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.stick") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(24, item);
@@ -123,7 +129,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe 16x mad.",
                 "",
-                "§8【 &7Pris§8: §f$300 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.food") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(31, item);
@@ -132,7 +138,7 @@ public class CVagtShopMenu {
                 "",
                 "§7Klik her for at købe 16x pile.",
                 "",
-                "§8【 &7Pris§8: §f$1000 §8】",
+                "§8【 &7Pris§8: §f$" + config.getConfig().getInt("Vagtshop.C.arrow") + " §8】",
                 "",
                 "§8§m-------------------------"));
         inv.setItem(32, item);

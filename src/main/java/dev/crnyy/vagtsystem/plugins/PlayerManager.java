@@ -24,6 +24,7 @@ public class PlayerManager {
     }
 
 
+
     public void setCoins(final Player player, int amount) {
         coins.put(player.getUniqueId(), amount);
         return;
