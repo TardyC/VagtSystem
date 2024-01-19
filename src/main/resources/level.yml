@@ -1,0 +1,12 @@
+level:
+
+  1:
+    food: 25
+    jail: 10
+    killprison: 25
+    ironingots: 32
+    cobblestone: 500
+    irongearpiece: 100
+    coal: 30
+
+

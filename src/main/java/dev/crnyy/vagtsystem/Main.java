@@ -1,5 +1,6 @@
 package dev.crnyy.vagtsystem;
 
+import com.earth2me.essentials.Essentials;
 import dev.crnyy.vagtsystem.commands.VagtCommand;
 import dev.crnyy.vagtsystem.files.Message;
 import dev.crnyy.vagtsystem.plugins.signs.HealSign;
@@ -20,7 +21,6 @@ import dev.crnyy.vagtsystem.plugins.vagtgearshop.a.AVagtShopListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.b.BVagtShopListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.a.AVagtEnchantItemsListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.a.AVagtEnchantListener;
-import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.b.BVagtEnchantItems;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.b.BVagtEnchantItemsListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.b.BVagtEnchantListener;
 import dev.crnyy.vagtsystem.plugins.vagtgearshop.vagtenchant.c.CVagtEnchantItems;
@@ -38,12 +38,15 @@ import dev.crnyy.vagtsystem.plugins.vagtontime.VagtOntime;
 import dev.crnyy.vagtsystem.plugins.vagtontime.VagtOntimeCommand;
 import dev.crnyy.vagtsystem.plugins.vagtontime.VagtOntimeListener;
 import dev.crnyy.vagtsystem.plugins.vagtpay.VagtPayListener;
+import dev.crnyy.vagtsystem.plugins.vagtshop.mainshop.VagtShopListener;
+import dev.crnyy.vagtsystem.plugins.vagtshop.pvshop.listener.PvShopListener;
+import dev.crnyy.vagtsystem.plugins.vagtshop.rareshop.listener.RareShopListener;
+import dev.crnyy.vagtsystem.plugins.vagtshop.warp.warplistener.*;
 import dev.crnyy.vagtsystem.plugins.vagtwarps.SignManagerWarp;
 import dev.crnyy.vagtsystem.plugins.vagtwarps.VagtWarpMenuListener;
 import dev.crnyy.vagtsystem.utils.Messages;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.block.Sign;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -100,8 +103,8 @@ public class Main extends JavaPlugin {
 
         //Vagt
         this.getServer().getPluginManager().registerEvents(new SignManager(message, config), this);
-        this.getServer().getPluginManager().registerEvents(new VagtMenuListener(), this);
-
+        this.getServer().getPluginManager().registerEvents(new VagtMenuListener(config, new Messages(message), message), this);
+        Essentials essentials = (Essentials) getServer().getPluginManager().getPlugin("Essentials"); //Here
         //VagtGearShop og EnchantShop
         this.getServer().getPluginManager().registerEvents(new CVagtShopListener(this, new Messages(message), config), this);
         this.getServer().getPluginManager().registerEvents(new CVagtEnchantListener(), this);
@@ -140,14 +143,29 @@ public class Main extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new VagtKisteStatus(config, message), this);
 
         //Vagt Warps
-        this.getServer().getPluginManager().registerEvents(new VagtWarpMenuListener(),this);
+        this.getServer().getPluginManager().registerEvents(new VagtWarpMenuListener(this, config, new Messages(message)),this);
         this.getServer().getPluginManager().registerEvents(new SignManagerWarp(message), this);
+
+        //WarpShop
+        this.getServer().getPluginManager().registerEvents(new VagtShopListener(config, message, new Messages(message), this), this);
+        this.getServer().getPluginManager().registerEvents(new CWarpShopListener(config, message, new Messages(message)), this);
+        this.getServer().getPluginManager().registerEvents(new BWarpShopListener(config, message, new Messages(message)), this);
+        this.getServer().getPluginManager().registerEvents(new AWarpShopListener(config, message, new Messages(message)), this);
+        this.getServer().getPluginManager().registerEvents(new MainWarpListener(config, message, new Messages(message)), this);
+
+        //PvShop
+        this.getServer().getPluginManager().registerEvents(new PvShopListener(config, message, new Messages(message), this), this);
+
+        //RareShop
+        this.getServer().getPluginManager().registerEvents(new RareShopListener(config, message, new Messages(message), this), this);
+
 
         //Vagt Løn
         this.getServer().getPluginManager().registerEvents(new VagtPayListener(), this);
 
         //Vagt Coins
         this.getServer().getPluginManager().registerEvents(new VagtCoinsListener(), this);
+
     }
 
     private void commands() {

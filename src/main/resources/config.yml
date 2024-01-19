@@ -91,6 +91,58 @@ Vagtbuffs:
 
 
 
+VagtWarp:
+  C:
+    #Skriv dit navn ude for dit warp så står det både i det menu Husk og kald dit warp det samme som hva det hedder
+    VagtWarp1: CVagtWarp1
+    VagtWarp2: CVagtWarp2
+    VagtWarp3: CVagtWarp3
+    VagtWarp4: CVagtWarp4
+    VagtWarp5: CVagtWarp5
+  B:
+    VagtWarp1: BVagtWarp1
+    VagtWarp2: BVagtWarp2
+    VagtWarp3: BVagtWarp3
+    VagtWarp4: BVagtWarp4
+    VagtWarp5: BVagtWarp5
+  A:
+    VagtWarp1: AVagtWarp1
+    VagtWarp2: AVagtWarp2
+    VagtWarp3: AVagtWarp3
+    VagtWarp4: AVagtWarp4
+    VagtWarp5: AVagtWarp5
+
+VagtWarpShop:
+  C:
+    #prisen for dine warps fra 2 til 5.
+    VagtWarp2: 1000
+    VagtWarp3: 1000
+    VagtWarp4: 1000
+    VagtWarp5: 1000
+  B:
+    VagtWarp2: 1000
+    VagtWarp3: 1000
+    VagtWarp4: 1000
+    VagtWarp5: 1000
+  A:
+    VagtWarp2: 1000
+    VagtWarp3: 1000
+    VagtWarp4: 1000
+    VagtWarp5: 1000
+
+VagtPvShop:
+  pv1: 15000
+  pv2: 20000
+  pv3: 30000
+  pv4: 100000
+  pv5: 100000
+  pv6: 100000
+  pv7: 100000
+  pv8: 100000
+  pv9: 100000
+  pv10: 100000
+
+
 
 
 #Vagtkiste disse items indholder

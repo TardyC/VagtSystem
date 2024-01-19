@@ -95,12 +95,17 @@ vagtmine:
   setspawnlocation: "Du har sat spawn locationen"
 
 vagtwarp:
-  warped-to: "Du har warpet til (x)"
+  goto: "&dDu har warpet til &f&l{0}"
+  notbuyed: "&dDu har ikke købt dette warp {0}"
+  buyedwarp: "&cDu har købt {0}, for {1}"
+  nomoney: "Du har ikke penge til {0} den koster {1}"
 
 
 vagtshopitems:
-  buyed-warp: "Du har købt et nyt vagt warp (Warped)"
   buyed-bonus: "Du har tilføjet 1% bonus"
   buyed-rareloot: "Du har opgradet din chance for mere rareloot i "
-  buyed-pv: "Du har købt x antal pv."
+  buyed-pv: "Du har købt {0} antal pv."
+  alreadyown: "DU har allerede denne pv"
+  nomoneypv: "Du har ikke råd til {0} pv den koster {1}"
+  no-order: "&dDu har ikke købt den Første!"
 

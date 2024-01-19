@@ -1,5 +1,6 @@
 package dev.crnyy.vagtsystem.plugins.vagtwarps;
 
+import dev.crnyy.vagtsystem.files.Config;
 import dev.crnyy.vagtsystem.utils.ItemStackManager;
 import dev.crnyy.vagtsystem.utils.LoreManager;
 import org.bukkit.Bukkit;
@@ -10,6 +11,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class CVagtWarpMenu {
+    private Config config;
+    public CVagtWarpMenu(Config config) {
+        this.config = config;
+    }
     private Inventory cvagtwarp = Bukkit.createInventory(null, 45, "§6§lVAGT§f§l WARP§7 - §cC§7 Menu");
 
     @Utility
@@ -38,45 +43,45 @@ public class CVagtWarpMenu {
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at warpe til",
-                "§fCVagtWarp §7#1",
+                "§f" + config.getConfig().getString("VagtWarp.C.VagtWarp1") + " §7#1",
                 "",
                 "§8§m-------------------------"));
 
         cvagtwarp.setItem(20, item);
-        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#1§8)", Material.SIGN, 2,0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#2§8)", Material.SIGN, 2,0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at warpe til",
-                "§fCVagtWarp §7#2",
+                "§f" + config.getConfig().getString("VagtWarp.C.VagtWarp2") + " §7#2",
                 "",
                 "§8§m-------------------------"));
 
         cvagtwarp.setItem(21, item);
-        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#1§8)", Material.SIGN, 3,0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#3§8)", Material.SIGN, 3,0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at warpe til",
-                "§fCVagtWarp §7#3",
+                "§f" + config.getConfig().getString("VagtWarp.C.VagtWarp3") + " §7#3",
                 "",
                 "§8§m-------------------------"));
 
 
         cvagtwarp.setItem(22, item);
-        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#1§8)", Material.SIGN, 4,0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#4§8)", Material.SIGN, 4,0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at warpe til",
-                "§fCVagtWarp §7#4",
+                "§f" + config.getConfig().getString("VagtWarp.C.VagtWarp4") + " §7#4",
                 "",
                 "§8§m-------------------------"));
 
 
         cvagtwarp.setItem(23, item);
-        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#1§8)", Material.SIGN, 5,0, loreManager.loreMaker(
+        item = itemStackManager.itemMaker("§6§lVAGT WARP §8(§7#5§8)", Material.SIGN, 5,0, loreManager.loreMaker(
                 "§8§m-------------------------",
                 "",
                 "§7Klik her for at warpe til",
-                "§fCVagtWarp §7#5",
+                "§f" + config.getConfig().getString("VagtWarp.C.VagtWarp5") + " §7#5",
                 "",
                 "§8§m-------------------------"));
 

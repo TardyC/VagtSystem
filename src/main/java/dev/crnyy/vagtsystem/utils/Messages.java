@@ -56,6 +56,44 @@ public class Messages {
         String newMessageOne = oldMessage.replace("{0}", type);
         return newMessageOne.replace("{1}", chat);
     }
+    public String vagtWarpGoto(String warp) {
+        String oldMessage = message.getMessages().getString("vagtwarp.goto");
+        return oldMessage.replace("{0}", String.valueOf(warp));
+    }
+    public String vagtWarpnotbuyed(String warp) {
+        String oldMessage = message.getMessages().getString("vagtwarp.notbuyed");
+        return oldMessage.replace("{0}", String.valueOf(warp));
+    }
+    public String VagtWarpBuyed(String type, int price) {
+        String oldMessage = message.getMessages().getString("vagtwarp.buyedwarp");
+        String newMessageOne = oldMessage.replace("{0}", type);
+        return newMessageOne.replace("{1}", String.valueOf(price));
+    }
+    public String VagtWarpNoMoney(String type, int price) {
+        String oldMessage = message.getMessages().getString("vagtwarp.nomoney");
+        String newMessageOne = oldMessage.replace("{0}", type);
+        return newMessageOne.replace("{1}", String.valueOf(price));
+    }
+    public String VagtPvAlreadyown(String type, int price) {
+        String oldMessage = message.getMessages().getString("vagtshopitems.alreadyown");
+        String newMessageOne = oldMessage.replace("{0}", type);
+        return newMessageOne.replace("{1}", String.valueOf(price));
+    }
+    public String VagtPvNoMoney(String type, int price) {
+        String oldMessage = message.getMessages().getString("vagtshopitems.nomoneypv");
+        String newMessageOne = oldMessage.replace("{0}", type);
+        return newMessageOne.replace("{1}", String.valueOf(price));
+    }
+    public String VagtPvBuyed(String type, int price) {
+        String oldMessage = message.getMessages().getString("vagtshopitems.buyed-pv");
+        String newMessageOne = oldMessage.replace("{0}", type);
+        return newMessageOne.replace("{1}", String.valueOf(price));
+    }
+    public String VagtPvNotInOrder(String type, int price) {
+        String oldMessage = message.getMessages().getString("vagtshopitems.no-order");
+        String newMessageOne = oldMessage.replace("{0}", type);
+        return newMessageOne.replace("{1}", String.valueOf(price));
+    }
 
 
 }
